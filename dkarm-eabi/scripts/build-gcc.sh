@@ -40,7 +40,7 @@ cd $target/gcc
 if [ ! -f configured-gcc ]
 then
 	CFLAGS="$cflags" CXXFLAGS="$cflags" LDFLAGS="$ldflags" CFLAGS_FOR_TARGET="-O2" CXXFLAGS_FOR_TARGET="-O2" LDFLAGS_FOR_TARGET="" ../../gcc-$GCC_VER/configure \
-		--enable-languages=c,c++,objc,obj-c++ \
+		--enable-languages=c,c++,objc,obj-c++,d \
 		--with-gnu-as --with-gnu-ld --with-gcc \
 		--with-march=armv4t\
 		--enable-poison-system-directories \
@@ -49,6 +49,7 @@ then
 		--disable-threads --disable-win32-registry --disable-nls --disable-debug\
 		--disable-libmudflap --disable-libssp --disable-libgomp \
 		--disable-libstdcxx-pch \
+		--disable-libphobos \
 		--target=$target \
 		--with-newlib \
 		--with-headers=../../newlib-$NEWLIB_VER/newlib/libc/include \

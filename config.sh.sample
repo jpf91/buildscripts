@@ -29,6 +29,11 @@ BUILD_DKPRO_DOWNLOAD=0
 #BUILD_DKPRO_INSTALLDIR=c:/devkitPro
 
 #---------------------------------------------------------------------------------
+# GDC clone directory, comment if not specified
+#---------------------------------------------------------------------------------
+#BUILD_DKPRO_GDCDIR=/home/jpf/d/GDC
+
+#---------------------------------------------------------------------------------
 # Path to previously downloaded source packages, comment if not specified
 #---------------------------------------------------------------------------------
 #BUILD_DKPRO_SRCDIR=/d/projects/archives

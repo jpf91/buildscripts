@@ -64,6 +64,11 @@ function extract_and_patch {
 			exit 1
 		fi
 		tar $extractflags "$SRCDIR/$1-$2$archivetype" || { echo "Error extracting "$1; exit 1; }
+		if [ $1 = "gcc" ]; then
+			cd $GDCDIR
+			./setup-gcc.sh $BUILDDIR/gcc-$GCC_VER
+			cd $BUILDDIR
+		fi
 		touch extracted-$1
 	fi
 	if [[ ! -f patched-$1 && -f $patchdir/$1-$2.patch ]]; then
@@ -115,6 +120,16 @@ else
 	read -e INSTALLDIR
 	echo
 fi
+if [ ! -z "$BUILD_DKPRO_GDCDIR" ] ; then
+	GDCDIR="$BUILD_DKPRO_GDCDIR"
+else
+	echo
+	echo "Please enter the directory where you cloned the GDC sources"
+
+	read -e GDCDIR
+	echo
+fi
+
 
 [ ! -z "$INSTALLDIR" ] && mkdir -p $INSTALLDIR && touch $INSTALLDIR/nonexistantfile && rm $INSTALLDIR/nonexistantfile || exit 1;
 
